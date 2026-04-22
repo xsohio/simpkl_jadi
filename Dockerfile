@@ -1,20 +1,17 @@
 FROM php:8.2-fpm-alpine
 
-# Install nginx
-RUN apk add --no-cache nginx
+# Install nginx dan supervisor
+RUN apk add --no-cache nginx supervisor
 
 # Install PHP extensions untuk MySQL
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-# Buat direktori nginx
-RUN mkdir -p /run/nginx
+# Buat direktori yang dibutuhkan
+RUN mkdir -p /run/nginx /var/log/supervisor
 
-# Copy nginx config
+# Copy config files
 COPY nginx.conf /etc/nginx/http.d/default.conf
-
-# Copy start script
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY supervisord.conf /etc/supervisord.conf
 
 # Copy semua file project
 COPY . /var/www/html/
@@ -25,4 +22,4 @@ RUN chown -R www-data:www-data /var/www/html \
 
 EXPOSE 8080
 
-CMD ["/start.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
