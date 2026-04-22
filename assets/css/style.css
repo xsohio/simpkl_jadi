@@ -1,0 +1,505 @@
+/* =========================================================== */
+/* 1. ROOT VARIABLES (Vibrant Blue & Slate Dark Theme)         */
+/* =========================================================== */
+:root {
+    /* Color Palette - Professional Blue */
+    --primary: #3b82f6;       /* Blue 500 */
+    --primary-light: #60a5fa; /* Blue 400 */
+    --primary-dark: #2563eb;  /* Blue 600 */
+    --accent: #1e3a8a;        /* Deep Blue Contrast */
+    
+    --success: #10b981;       /* Emerald 500 */
+    --warning: #f59e0b;       /* Amber 500 */
+    --danger: #ef4444;        /* Red 500 */
+    
+    /* Backgrounds */
+    --bg-body: #0f172a;       /* Slate 900 (Main BG) */
+    --bg-card: #1e293b;       /* Slate 800 (Card BG) */
+    
+    /* Typography */
+    --text-main: #f8fafc;     /* White Text */
+    --text-muted: #94a3b8;    /* Gray Text */
+    --border: #334155;        /* Slate 700 - Borders */
+    
+    --radius: 10px;           /* Sudut Membulat Modern */
+    --transition: 0.3s ease;  /* Transisi Standar */
+}
+
+/* ----------------------------------------------------------- */
+/* 2. KEYFRAMES (ANIMATIONS)                                   */
+/* ----------------------------------------------------------- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translate3d(0, 30px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes pressDown {
+    0% { transform: scale(1); }
+    100% { transform: scale(0.98); }
+}
+
+/* =========================================================== */
+/* 3. BASE RESET & TYPOGRAPHY                                  */
+/* =========================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+a { color: var(--primary-light); text-decoration: none; transition: var(--transition); }
+a:hover { color: var(--primary-dark); }
+h1, h2, h3, h4 { color: var(--text-main); line-height: 1.2; margin-bottom: 10px; }
+p { margin-bottom: 15px; color: var(--text-muted); }
+
+.text-center { text-align: center; }
+.mt-3 { margin-top: 1rem; }
+
+/* =========================================================== */
+/* 4. COMPONENTS (Buttons, Cards, Badges, Forms, Tables)       */
+/* =========================================================== */
+
+/* Buttons */
+.btn {
+    display: inline-block; padding: 10px 24px; border-radius: var(--radius);
+    background-color: var(--primary); color: white !important; border: none;
+    cursor: pointer; font-weight: 600; text-align: center; transition: var(--transition);
+    font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3); }
+.btn:active { animation: pressDown 0.1s ease-out both; }
+
+/* Cards */
+.card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Badges */
+.badge {
+    padding: 5px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
+    display: inline-block; text-transform: uppercase;
+}
+.badge-success { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+.badge-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+.badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.badge-info { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+
+/* Forms */
+form { margin-top: 10px; }
+.form-group { margin-bottom: 20px; position: relative; }
+label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+
+input, select, textarea {
+    width: 100%; padding: 12px 15px;
+    background-color: #0b1120; 
+    border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--text-main); font-size: 0.95rem; transition: var(--transition);
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* Input Group (Login/Register) */
+.input-group { position: relative; }
+.input-group input { padding-left: 45px !important; }
+.input-group .input-icon {
+    position: absolute; top: 50%; left: 15px; transform: translateY(-50%);
+    color: var(--text-muted); font-size: 1.1rem; pointer-events: none;
+}
+.input-group input:focus + .input-icon { color: var(--primary); }
+
+/* Tables */
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 15px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+th { background-color: #151f32; color: var(--text-main); padding: 15px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 600; }
+td { padding: 15px; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+tr:last-child td { border-bottom: none; }
+tr:hover { background-color: #1e293b; }
+
+/* Alerts */
+.alert { padding: 15px; border-radius: var(--radius); margin-bottom: 20px; font-size: 0.9rem; }
+.alert-danger { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #fca5a5; }
+.alert-success { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+
+/* =========================================================== */
+/* 5. DASHBOARD LAYOUT (Sidebar & Content)                     */
+/* =========================================================== */
+.dashboard-container { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; background: var(--bg-card); border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; z-index: 50;
+    padding: 20px 0;
+}
+.sidebar-header {
+    color: var(--primary-light); font-size: 1.2rem; font-weight: 800; text-align: center;
+    padding: 0 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px;
+}
+.sidebar .nav-link {
+    display: flex; align-items: center; padding: 12px 25px; color: var(--text-muted);
+    transition: var(--transition); margin-bottom: 5px; border-left: 3px solid transparent; font-weight: 500;
+}
+.sidebar .nav-link i { width: 25px; margin-right: 15px; text-align: center; font-size: 1.1rem; }
+.sidebar .nav-link:hover { background: rgba(59, 130, 246, 0.05); color: var(--primary-light); }
+.sidebar .nav-link.active {
+    background: rgba(59, 130, 246, 0.1); color: var(--primary); border-left-color: var(--primary);
+}
+
+/* --- SIDEBAR PROFILE FIX (INI YANG PENTING UNTUK MASALAH ANDA) --- */
+.sidebar .avatar-circle {
+    width: 80px !important;       /* Paksa Lebar */
+    height: 80px !important;      /* Paksa Tinggi */
+    border-radius: 50% !important;/* Paksa Bulat */
+    margin: 0 auto 15px auto;     /* Posisi Tengah */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem !important; /* Huruf Besar */
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 3px solid var(--bg-body);
+    flex-shrink: 0; /* Mencegah penyusutan */
+}
+
+/* 2. Gambar di Dalamnya (Image) */
+.sidebar-avatar img {
+    width: 100%;          /* Penuhi wadah */
+    height: 100%;         /* Penuhi wadah */
+    object-fit: cover;    /* KUNCI: Crop gambar agar proporsional (tidak gepeng) */
+    object-position: center; /* Fokus ke tengah gambar */
+    display: block;
+}
+
+/* Main Content */
+.main-content { flex: 1; padding: 30px; background: var(--bg-body); width: 100%; overflow-y: auto; }
+.header-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+
+/* =========================================================== */
+/* 6. DASHBOARD WIDGETS                                        */
+/* =========================================================== */
+.hero-card {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    padding: 35px; border-radius: var(--radius); color: white;
+    position: relative; overflow: hidden; margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+.hero-bg-icon {
+    position: absolute; right: 20px; bottom: -10px; font-size: 7rem;
+    opacity: 0.15; color: white; transform: rotate(-10deg);
+}
+
+/* Stat Grid */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-bottom: 30px; }
+.stat-card {
+    background: var(--bg-card); padding: 25px; border-radius: var(--radius); border: 1px solid var(--border);
+    display: flex; align-items: center; gap: 20px; transition: var(--transition);
+}
+.stat-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+.stat-icon {
+    width: 55px; height: 55px; border-radius: 12px; background: rgba(59, 130, 246, 0.1);
+    color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+}
+
+/* Progress Track (Dashboard Siswa) */
+.progress-track { display: flex; justify-content: space-between; position: relative; margin-bottom: 30px; }
+.progress-track::before {
+    content: ''; position: absolute; top: 15px; left: 0; width: 100%; height: 4px;
+    background: var(--border); z-index: 0;
+}
+.step { text-align: center; width: 20%; position: relative; z-index: 1; }
+.step-circle {
+    width: 35px; height: 35px; background: var(--bg-card); border: 2px solid var(--border);
+    border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; color: var(--text-muted);
+}
+.step.active .step-circle { background: var(--success); border-color: var(--success); color: #0f172a; }
+
+/* Quick Grid & Feed */
+/* Cari class .quick-grid dan tambahkan margin-bottom */
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    
+    /* TAMBAHKAN INI UNTUK MEMBERI JARAK KE BAWAH */
+    margin-bottom: 30px; 
+}
+.quick-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; text-align: center; cursor: pointer; transition: 0.3s;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 140px;
+}
+.quick-card:hover { border-color: var(--primary); transform: translateY(-5px); background: #1a233a; }
+.quick-card .quick-icon { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+
+/* Feed Elements */
+.feed-item { display: flex; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--border); }
+.feed-item:last-child { border-bottom: none; }
+/* General Avatar Circle (Used in feeds) */
+.avatar-circle {
+    width: 40px; height: 40px; background: var(--border); border-radius: 50%; color: white;
+    display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; flex-shrink: 0;
+}
+
+/* Task List */
+.task-list { display: flex; flex-direction: column; gap: 15px; }
+.task-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 15px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    transition: var(--transition); border-left: 4px solid transparent; color: var(--text-main);
+}
+.task-item:hover { transform: translateX(5px); border-left-color: var(--primary); background: #1a233a; }
+.task-icon {
+    width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    margin-right: 15px; flex-shrink: 0; font-size: 1.1rem; background: var(--primary-light); color: white;
+}
+
+/* =========================================================== */
+/* 7. PUBLIC HOMEPAGE STYLES                                   */
+/* =========================================================== */
+.header-nav {
+    background-color: rgba(30, 41, 59, 0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border); padding: 15px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+}
+.header-nav .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary-light); }
+.header-nav .nav-links { display: flex; align-items: center; gap: 25px; }
+
+.public-hero {
+    background-color: var(--bg-body);
+    background-image: url('https://images.unsplash.com/photo-1552581234-26160f608093?fit=crop&w=1974&q=80');
+    background-size: cover; background-position: center;
+    height: 80vh; min-height: 600px; display: flex; align-items: center; justify-content: center;
+    position: relative;
+}
+.public-hero::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.8); z-index: 1;
+}
+.hero-text { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 20px; opacity: 0; animation: fadeInUp 1s ease-out 0.3s forwards; }
+.hero-text h1 { font-size: 3.5rem; font-weight: 800; color: white; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.hero-text p { font-size: 1.2rem; color: #e2e8f0; margin-bottom: 30px; }
+
+.section-container { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2.5rem; color: var(--text-main); }
+
+/* Timeline & Features */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 20px 0; }
+.timeline::after { content: ''; position: absolute; width: 2px; background: var(--border); top: 0; bottom: 0; left: 50%; margin-left: -1px; }
+.timeline-item { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; }
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; }
+.timeline-item::after {
+    content: ''; position: absolute; width: 16px; height: 16px; right: -8px; background: var(--primary);
+    top: 15px; border-radius: 50%; z-index: 1; border: 3px solid var(--bg-body);
+}
+.timeline-item:nth-child(even)::after { left: -8px; }
+.timeline-item-content { background: var(--bg-card); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); }
+
+/* Benefits Grid */
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.benefit-card {
+    background: var(--bg-card); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border); transition: 0.3s;
+}
+.benefit-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+.benefit-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; display: block; }
+.benefit-card h4 { color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px; }
+
+/* Stats Bar */
+.stats-bar { background: var(--accent); padding: 50px 5%; margin: 40px 0; }
+.stats-grid { display: flex; justify-content: space-around; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; text-align: center; gap: 30px; }
+.stat-item h3 { font-size: 3rem; font-weight: 800; color: var(--primary-light); margin-bottom: 5px; }
+
+/* Mitra & Laporan Grid */
+.laporan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.laporan-card, .mitra-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; transition: 0.3s; display: flex; flex-direction: column;
+}
+.laporan-card:hover, .mitra-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+.mitra-card { text-align: center; align-items: center; }
+.mitra-icon { font-size: 3rem; color: var(--text-muted); margin-bottom: 15px; }
+
+/* FAQ Accordion */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 15px; overflow: hidden; }
+.faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; transition: 0.3s; }
+.faq-question:hover { background: rgba(255,255,255,0.05); }
+.faq-item.active .faq-question { background: var(--primary); color: white; }
+.faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; padding: 0 20px; background: #161e2e; }
+.faq-item.active .faq-answer { max-height: 300px; padding: 20px; }
+.faq-icon { transition: 0.3s; }
+.faq-item.active .faq-icon { transform: rotate(180deg); }
+
+/* Footer */
+footer { background: #020617; color: var(--text-muted); padding: 60px 5% 20px; border-top: 3px solid var(--primary); margin-top: 50px; }
+.footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+.footer-content h4 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+.footer-links a { display: block; color: var(--text-muted); margin-bottom: 10px; }
+.footer-links a:hover { color: var(--primary); padding-left: 5px; }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+
+/* =========================================================== */
+/* 8. AUTH PAGES (Login/Register)                              */
+/* =========================================================== */
+.auth-container {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+    background: url('https://images.unsplash.com/photo-1552581234-26160f608093?fit=crop&w=1974&q=80') center/cover;
+    position: relative;
+}
+.auth-container::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.85); z-index: 1; backdrop-filter: blur(5px);
+}
+.auth-card {
+    position: relative; z-index: 2; background: var(--bg-card); width: 100%; max-width: 400px;
+    padding: 40px; border-radius: var(--radius); border: 1px solid var(--border);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5); animation: fadeInUp 0.5s ease-out;
+}
+.logo-title {
+    font-size: 1.8rem; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 5px;
+}
+
+/* =========================================================== */
+/* 9. RESPONSIVE                                               */
+/* =========================================================== */
+@media (max-width: 768px) {
+    .dashboard-container { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: relative; padding-bottom: 10px; }
+    .hero-text h1 { font-size: 2.5rem; }
+    .stats-grid { flex-direction: column; }
+    .timeline::after { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; }
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; text-align: left; }
+    .timeline-item:nth-child(odd)::after, .timeline-item:nth-child(even)::after { left: 12px; }
+    .header-nav { flex-direction: column; gap: 15px; }
+}
+
+/* --- DASHBOARD PRO STYLES (ADD ON) --- */
+
+/* Layout Grid Dashboard */
+.dashboard-pro-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Kiri lebih lebar dari kanan */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Stat Cards dengan Aksen Warna */
+.stat-card.blue  { border-left: 4px solid #3b82f6; }
+.stat-card.green { border-left: 4px solid #10b981; }
+.stat-card.red   { border-left: 4px solid #ef4444; }
+.stat-card.purple{ border-left: 4px solid #8b5cf6; }
+
+.stat-card .stat-icon.blue-bg   { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.stat-card .stat-icon.green-bg  { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.stat-card .stat-icon.red-bg    { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.stat-card .stat-icon.purple-bg { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; }
+
+/* Quick Action Cards (Lebih besar dari tombol biasa) */
+.action-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+.action-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.action-icon {
+    width: 50px; height: 50px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    background: var(--bg-body);
+}
+
+/* Activity List (Kanan) */
+.activity-list { list-style: none; padding: 0; }
+.activity-item {
+    display: flex; gap: 15px; padding-bottom: 15px; margin-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+.activity-item:last-child { border: none; margin: 0; }
+.activity-time { font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 5px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dashboard-pro-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================== */
+/* OVERRIDE TEMA INDEX BIAR MATCHING SAMA ADMIN & LOGIN        */
+/* =========================================================== */
+
+/* 1. Samain warna dasar sama Screenshot (Dark Navy/Indigo) */
+:root {
+    --bg-body: #0B0E14 !important; /* Background utama super gelap */
+    --bg-card: #151A23 !important; /* Background card kaya di admin */
+    --border: #2D3748 !important;  /* Garis border tipis elegan */
+}
+
+/* 2. Buang gambar pemandangan di Hero & Login, ganti gradient dark */
+.public-hero, .auth-container {
+    background-image: radial-gradient(circle at top right, #1E293B, var(--bg-body)) !important;
+}
+.public-hero::after, .auth-container::before {
+    display: none !important; /* Buang overlay karena udah full dark */
+}
+
+/* 3. Tombol CTA dibikin putih persis kaya tombol "MASUK SEKARANG" */
+.public-hero .btn {
+    background: #FFFFFF !important;
+    color: #0B0E14 !important;
+    font-weight: 800;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* 4. Samain bentuk Card di Index sama Dashboard Admin */
+.benefit-card, .mitra-card, .laporan-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* 5. Paksa semua section background biar seragam dan gak belang */
+.about-section, #mitra-section, #laporan-section, #faq-section {
+    background: var(--bg-body) !important;
+}
+
+/* 6. Navbar, Stats Bar, & Footer di-adjust biar nyatu warnanya */
+.header-nav {
+    background-color: rgba(11, 14, 20, 0.95) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+.stats-bar {
+    background: var(--bg-card) !important;
+    border-top: 1px solid var(--border) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+.stats-bar h2 { color: var(--text-main) !important; }
+footer {
+    background: #07090C !important;
+    border-top: 1px solid var(--border) !important;
+}
