@@ -7,11 +7,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-define('BASE_URL', 'coba/webpkl/siswa2/');
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');    // Ganti sesuai username MySQL Anda
-define('DB_PASS', '');        // Ganti sesuai password MySQL Anda
-define('DB_NAME', 'webpkl_fixed');
+define('BASE_URL', getenv('BASE_URL') ?: 'coba/webpkl/siswa2/');
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_NAME', getenv('DB_NAME') ?: 'webpkl_fixed');
 
 // ── mysqli connection (dipakai login.php & bagian lama) ──────────────────
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
